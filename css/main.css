@@ -1,0 +1,474 @@
+:root{
+    --font-color : #fdfdff;
+    --backGround : #344fa1;
+    --secondBack : #031956;
+    --secondColor : #eb05fe;
+    --blur: #829ee7;
+}
+
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Signika Negative', sans-serif;
+    overflow-x: hidden;
+    background-color: var(--backGround);
+    color: var(--font-color);
+    transition: all 0.75s ease-in-out;
+}
+a{
+  text-decoration: none;
+}
+ul{
+  list-style: none;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+    /* Small */
+    @media (min-width: 768px) {
+        .container {
+            width: 750px;
+        }
+    }
+      /* Medium */
+    @media (min-width: 992px) {
+        .container {
+            width: 970px;
+        }
+    }
+      /* Large */
+    @media (min-width: 1200px) {
+        .container {
+            width: 1170px ;
+        }
+    }
+/* change scroll bar */
+/* width */
+::-webkit-scrollbar {
+    width: 11px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--backGround);
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondColor);
+    border-radius: 8px;
+  }
+  /* ::-webkit-scrollbar-thumb:hover{
+    background: #1976d2;
+  } */
+/* first page */
+.first{
+    z-index: 2;
+    min-height: 100vh;
+}
+/* nav bar */
+.nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--secondBack);
+    z-index: 500;
+}
+.nav .container{
+    display: flex;
+    align-items: center;
+}
+.nav .container .setting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 39px;
+    cursor: pointer;
+}
+.nav .container .setting div{
+    width: 41px;
+    height: 6px;
+    background-color: var(--blur);
+    border-radius: 6px;
+}
+/* intro */
+.intro{
+    margin-top: 100px;
+}
+.intro h1{
+    font-size: 43px;
+    text-align: center;
+    margin: 85px;
+}
+/* Add tasks */
+.add{
+    margin-bottom: 100px;
+}
+.add .container h1{
+    color: var(--blur);
+    font-weight: 500;
+}
+.add .container .add2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 33px;
+}
+.add .container div input{
+    height: 60px;
+    width: 357px;
+    padding: 13px;
+    background: transparent;
+    border: none;
+    border-left: 3px solid var(--secondBack);
+    background-color: var(--blur);
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    caret-color: var(--font-color);
+}
+.add .container div input::placeholder{
+    color: var(--font-color);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out , top 1s 0.5s ease-in-out;
+    position: relative;
+}
+.add .container div input:focus::placeholder{
+    opacity: 0;
+}
+.add .container div input:focus{
+    outline: none;
+}
+.add .container div button{
+    outline: none;
+    height: 60px;
+    width: 120px;
+    border-radius: 14px;
+    background-color: var(--secondBack);
+    color: var(--font-color);
+    border: none;
+    cursor: pointer;
+}
+.tasks .container .today{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tasks .container .today button{
+    outline: none;
+    height: 60px;
+    width: 120px;
+    border-radius: 14px;
+    background-color: var(--secondColor);
+    color: var(--font-color);
+    border: none;
+    cursor: pointer;
+}
+.tasks .container .today h1{
+    color: var(--blur);
+    font-weight: 500;
+}
+.tasks .container .tasksField{
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondBack);
+    height: fit-content;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 21px;
+    flex-direction: column;
+}
+.tasks .container .tasksField .taskLi{
+    margin: 30px;
+    font-size: 35px;
+    background-color: var(--secondBack);
+    width: 100%;
+    height: 104px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 30px;
+    border-radius: 11px;
+}
+.tasks .container .tasksField .taskLi input{
+    margin-right: -100px;
+}
+.tasks .container .tasksField .taskLi label{
+    width: 64%;
+}
+.tasks .container .tasksField .taskLi button{
+    font-size: 16px;
+    outline: none;
+    height: 43px;
+    width: 71px;
+    border-radius: 14px;
+    background-color: var(--secondColor);
+    color: var(--font-color);
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: -204px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.tasks .container .tasksField .taskLi .taskValue{
+    margin-left: 20px;
+    width: 100%;
+    display: inline-flex;
+    font-size: 37px;
+    align-items: center;
+    line-height: 1.8;
+    overflow: auto;
+}
+
+/* custom check box  */
+/* Customize the label (the container) */
+.container2 {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container2 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 16px;
+    border: 2px solid var(--secondColor);
+    transition: all 0.25s ease-in-out;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container2:hover input ~ .checkmark {
+    background-color: var(--blur);
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container2 input:checked ~ .checkmark {
+    background-color: var(--secondBack);
+    color: var(--font-color);
+  }
+
+  .container2 input:checked ~ .taskValue {
+    text-decoration-line: line-through;
+    color: var(--blur);
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container2 input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container2 .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+@media screen and (max-width: 768px){
+    .tasks .container .today button{
+        width: 85px;
+        height: 45px;
+    }
+    .tasks .container .tasksField .taskLi {
+        margin: 21px;
+        width: 129%;
+        height: 83px;
+        padding: 18px;
+    }   
+    .tasks .container .tasksField .taskLi .taskValue{
+        overflow: auto;
+        font-size: 21px;
+    } 
+    .tasks .container .tasksField .taskLi button {
+        right: -107px;
+    }
+    #taskValue {
+        margin-left: 7px;
+        font-size: 20px;
+        overflow: auto;
+    }    
+} 
+
+audio{
+    display: none;
+}
+
+
+/* setting bar  */
+.settingBar{
+    width: 43%;
+    height: 100vh;
+    background-color: var(--secondBack);
+    position: fixed;
+    top: 0;
+    left: -1000px;
+    transition: all 0.75s ease-in-out;
+    padding: 44px;
+}
+.settingBar .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.settingBar .img{
+    font-size: 98px;
+    border: 4px solid var(--secondColor);
+    width: fit-content;
+    padding: 37px;
+    height: 180px;
+    border-radius: 103px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.settingBar #settingUserName{
+    font-size: 52px;
+    width: 227px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+.settingBar .settingSection{
+    margin-left: -121px;
+    width: 72%;
+    margin-top: 35px;
+}
+.settingBar .settingSection h1{
+    width: 100%;
+    font-size: 23px;
+    font-weight: 200;
+    color: var(--font-color);
+    opacity: 0.5;
+    margin: 40px;
+    transition: all 0.75s ease-in-out;
+    cursor: pointer;
+}
+#changeSound{
+    cursor: alias
+}
+.settingBar .settingSection h1:hover {
+    opacity: 1;
+}
+.settingBar .settingSection  h1 .icon{
+    margin-right: 30px;
+    color: var(--blur);
+    opacity: 1;
+}
+.settingBar .settingSection h1 #control{
+    margin-left: 77px;
+    display: inline-flex;
+    flex-direction: row;
+    gap: 12px;
+}
+.settingBar .settingSection h1 #control #onDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.75s ease-in-out;
+}
+.settingBar .settingSection h1 #control #offDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.social{
+    display: flex;
+    margin: 20px;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.social li{
+    border: none;
+    background-color: red;
+    width: 43px;
+    height: 43px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 27px;
+    border-radius: 10px;
+}
+.social li a{
+    color: var(--font-color);
+}
+
+#git{
+    background-color: #171515;
+    outline-color: #171515;
+}
+#linkedIn{
+    background-color: #0072b1;
+    outline-color: #0072b1;
+}
+#face{
+    background-color: #4267B2;
+    outline-color: #4267B2;
+}
+#insta{
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    outline-color: #dc2743;
+}
+@media screen and (max-width: 768px){
+    
+}
