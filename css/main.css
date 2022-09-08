@@ -17,11 +17,14 @@ html{
     scroll-behavior: smooth;
 }
 body{
+    position: relative;
     font-family: 'Signika Negative', sans-serif;
     overflow-x: hidden;
     background-color: var(--backGround);
     color: var(--font-color);
     transition: all 0.75s ease-in-out;
+    min-height: 100vh;
+    padding-bottom: 60px;
 }
 a{
   text-decoration: none;
@@ -485,6 +488,9 @@ footer{
     justify-content: center;
     align-items: center;
     background-color: var(--blur);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 } 
 @media screen and (max-width: 768px){
     .settingBar{
