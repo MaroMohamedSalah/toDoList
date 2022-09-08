@@ -44,7 +44,6 @@ if(localStorage.getItem("toDoUsername")){
                 localStorage.setItem('toDoUsername' , singUp.value);
                 location.href  = './pages/main.html'
             }
-            // btn.style.display = 'block';
         }else{
             check.style.opacity = '0';
             btn.style.opacity = '0';
@@ -58,8 +57,6 @@ if(localStorage.getItem("toDoUsername")){
                 msg.style.opacity = '0';
                 msg.textContent = '';
             }
-    
-            // btn.style.display = 'none';
         }
     }
     function checkFirstLetterNumber(_string)

@@ -12,9 +12,15 @@ let blur0 = document.getElementById('blur');
 let btn = document.getElementById('btn');
 let reset = document.getElementById("reset");
 let changeColor = document.getElementById('changeColor');
+let social = document.getElementById('social');
 
 changeColor.onclick = () =>{    
+    if (window.matchMedia("(max-width: 768px)").matches){
+        social.style.bottom = '-205px'
+        console.log("phone")
+    }
     colors.style.display = 'grid';
+    social.style.bottom = 
     setTimeout(() => {
         colors.style.opacity = '1';
     }, 500);
@@ -176,6 +182,7 @@ setting.onclick = () =>{
     }else{
         colors.style.display = "none";
         colors.style.opacity = '0';
+        social.style.bottom = '0';
         count1 = 0;
         second.style.marginTop = '0'
         first.style.transform = 'none'
@@ -197,7 +204,7 @@ if(localStorage.getItem('toDoUsername')){
     location.href = '../welcom.html'
 }
 // add tasks 
-let tasksOption = ['Check emails' , 'Meditation' , 'Coding'];
+let tasksOption = ['Check emails' , 'Meditation' , 'Coding' , 'Call Marwan'];
 let index = 0;
 setInterval(() => {
     if (index === tasksOption.length) {
