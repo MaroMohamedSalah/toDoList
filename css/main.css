@@ -352,6 +352,11 @@ ul{
     .tasks .container .tasksField .taskLi label {
         width: 80%;
     }
+    .tasks .container .tasksField{
+        padding: 20px;
+        font-size: 14px;
+        margin-bottom: 60px;
+    }
 } 
 
 audio{
