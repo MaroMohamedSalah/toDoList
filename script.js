@@ -6,6 +6,9 @@ let user  = document.getElementById('user');
 let btn = document.getElementById('signUp');
 let msg = document.getElementById('msg');
 let userSection = document.getElementById('userSection');
+if(localStorage.getItem("toDoUsername")){
+    location.href = './pages/main.html'
+}
 window.onscroll = () => {
     if (window.scrollY >= 0 && window.scrollY < 472) {
         intro.style.opacity = '1';
