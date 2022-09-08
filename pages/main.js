@@ -1,5 +1,87 @@
+// ############## need to edit that and make all color on array on localStorage ###############
 
 
+// play with color 
+let r = document.querySelector(':root');
+
+let colors = document.getElementById("colors")
+let font = document.getElementById('font');
+let bg1 = document.getElementById('bg1');
+let bg2 = document.getElementById('bg2');
+let blur0 = document.getElementById('blur');
+let btn = document.getElementById('btn');
+let reset = document.getElementById("reset");
+let changeColor = document.getElementById('changeColor');
+
+changeColor.onclick = () =>{    
+    colors.style.display = 'grid';
+    setTimeout(() => {
+        colors.style.opacity = '1';
+    }, 500);
+}
+
+if(localStorage.getItem('toDoFontColor')){
+    r.style.setProperty('--font-color', localStorage.getItem('toDoFontColor') );
+}else{
+    font.value = '#fdfdff';
+}
+
+if(localStorage.getItem('toDoBg1Color')){
+    r.style.setProperty('--backGround', localStorage.getItem('toDoBg1Color') );
+}else{
+    bg1.value = '#344fa1';
+}
+
+if(localStorage.getItem('toDoBg2Color')){
+    r.style.setProperty('--secondBack', localStorage.getItem('toDoBg2Color') );
+}else{
+    bg2.value = '#031956';
+}
+
+if(localStorage.getItem('toDoBlurColor')){
+    r.style.setProperty('--blur', localStorage.getItem('toDoBlurColor') );
+}else{
+    blur0.value = '#819dee';
+}
+
+if(localStorage.getItem('toDoBtnColor')){
+    r.style.setProperty('--secondColor', localStorage.getItem('toDoBtnColor') );
+}else{
+    btn.value = '#eb05fe';
+}
+
+
+
+font.oninput = () =>{
+    localStorage.setItem("toDoFontColor" , font.value);
+    r.style.setProperty('--font-color', font.value);
+}
+bg1.oninput = () =>{
+    r.style.setProperty('--backGround', bg1.value);
+    localStorage.setItem("toDoBg1Color" , bg1.value);
+}
+bg2.oninput = () =>{
+    r.style.setProperty('--secondBack', bg2.value);
+    localStorage.setItem("toDoBg2Color" , bg2.value);
+}
+blur0.oninput = () =>{
+    r.style.setProperty('--blur', blur0.value);
+    localStorage.setItem("toDoBlurColor" , blur0.value);
+}
+btn.oninput = () =>{
+    r.style.setProperty('--secondColor', btn.value);
+    localStorage.setItem("toDoBtnColor" , btn.value);
+}
+
+reset.onclick = () =>{
+    localStorage.removeItem('toDoFontColor');
+    localStorage.removeItem('toDoBg1Color');
+    localStorage.removeItem('toDoBg2Color');
+    localStorage.removeItem('toDoBlurColor');
+    localStorage.removeItem('toDoBtnColor');
+
+    location.reload();
+}
 
 // selection 
 let nav = document.getElementById('nav');
@@ -32,6 +114,7 @@ let offInput = document.getElementById('offInput');
 // setting 
 settingUserName.textContent = localStorage.getItem('toDoUsername')
 let count1 = 0 ;
+localStorage.setItem("soundOn" , true);
 onInput.checked = true;
 offInput.checked = false;
 onDiv.style.color = 'var(--blur)'
@@ -42,10 +125,10 @@ if(localStorage.getItem('soundOn')){
     onDiv.style.color = 'var(--blur)'
     offDiv.style.color = 'var(--font-color)'
 }else{
-    offInput.checked = true;
-    onInput.checked = false;
-    offDiv.style.color = 'var(--blur)'
-    onDiv.style.color = 'var(--font-color)'
+    onInput.checked = true;
+    offInput.checked = false;
+    onDiv.style.color = 'var(--blur)'
+    offDiv.style.color = 'var(--font-color)'
 }
 setting.onclick = () =>{
     if(count1 === 0){
@@ -91,6 +174,8 @@ setting.onclick = () =>{
             }
         }, 1000);
     }else{
+        colors.style.display = "none";
+        colors.style.opacity = '0';
         count1 = 0;
         second.style.marginTop = '0'
         first.style.transform = 'none'

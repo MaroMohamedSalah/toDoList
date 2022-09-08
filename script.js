@@ -1,3 +1,4 @@
+
 let myName = document.getElementById('myName');
 let intro = document.getElementById('textIntro');
 let singUp = document.getElementById('username');

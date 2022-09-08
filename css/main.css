@@ -3,7 +3,7 @@
     --backGround : #344fa1;
     --secondBack : #031956;
     --secondColor : #eb05fe;
-    --blur: #829ee7;
+    --blur: #819dee ;
 }
 
 *{
@@ -418,6 +418,32 @@ audio{
 #changeSound{
     cursor: alias
 }
+#colors{
+    display: none;
+    grid-template-columns: repeat(2 , auto);
+    margin: 10px auto;
+    gap: 19px;
+    margin-left: 94px;
+    opacity: 0;
+    transition: all 0.75s ease-in-out;
+}
+#colors div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+}
+#reset{
+    outline: none;
+    height: 51px;
+    width: 81px;
+    border-radius: 14px;
+    background-color: var(--secondColor);
+    color: var(--font-color);
+    border: none;
+    cursor: pointer;
+}
 .settingBar .settingSection h1:hover {
     opacity: 1;
 }
@@ -528,11 +554,16 @@ footer{
         gap: 12px;
         margin: 8px;
     }
+    #colors {
+        margin: 0px auto;
+        gap: 19px;
+        margin-left: 16px;
+    }
     .social {
         margin: 16px;
         width: 93%;
         position: absolute;
-        bottom: 0;
+        bottom: -221px;
     } 
     .social li {
         width: 41px;
