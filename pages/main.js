@@ -63,7 +63,7 @@ setting.onclick = () =>{
         if (window.matchMedia("(max-width: 768px)").matches) {
             document.querySelector('body').style.cssText = `
             width: 100%;
-            right: -309px;
+            right: -260px;
             position: relative;
             `
         }

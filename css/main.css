@@ -105,6 +105,7 @@ ul{
     height: 6px;
     background-color: var(--blur);
     border-radius: 6px;
+    transition: all 0.5s ease-in-out;
 }
 /* intro */
 .intro{
@@ -238,6 +239,7 @@ ul{
     align-items: center;
     line-height: 1.8;
     overflow: auto;
+    height: 100%;
 }
 
 /* custom check box  */
@@ -332,13 +334,21 @@ ul{
         font-size: 21px;
     } 
     .tasks .container .tasksField .taskLi button {
-        right: -107px;
+        right: -49px;
+        font-size: 9px;
+        outline: none;
+        height: 27px;
+        width: 38px;
+        border-radius: 8px;
     }
     #taskValue {
         margin-left: 7px;
         font-size: 20px;
         overflow: auto;
     }    
+    .tasks .container .tasksField .taskLi label {
+        width: 80%;
+    }
 } 
 
 audio{
@@ -356,8 +366,9 @@ audio{
     left: -1000px;
     transition: all 0.75s ease-in-out;
     padding: 44px;
+    overflow: overlay;
 }
-.settingBar .container{
+.settingBar .container3{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -469,6 +480,56 @@ audio{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
     outline-color: #dc2743;
 }
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blur);
+} 
 @media screen and (max-width: 768px){
-    
+    .settingBar{
+        padding: 8px;
+        overflow-x: hidden;
+    }
+    .settingBar .img{
+        height: 135px;
+        width: 135px;
+        font-size: 80px;
+        margin-top: 25px;
+    }
+    .settingBar #settingUserName {
+        font-size: 47px;
+        text-align: center;
+    }
+    .settingBar .settingSection {
+        width: 100%;
+        margin-top: 2px;
+        margin-left: -26px;
+    }
+    .settingBar .settingSection h1 {
+        font-size: 20px;
+        margin: 33px;
+    }
+    .settingBar .settingSection h1 .icon {
+        margin-right: 16px;
+    } 
+    .settingBar .settingSection h1 #control {
+        gap: 12px;
+        margin: 8px;
+    }
+    .social {
+        margin: 16px;
+        width: 93%;
+        position: absolute;
+        bottom: 0;
+    } 
+    .social li {
+        width: 41px;
+        font-size: 19px;
+        padding: 0;
+    }       
+    footer{
+        font-size: 8px;
+        padding: 20px;
+    }
 }
