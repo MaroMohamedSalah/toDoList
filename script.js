@@ -20,7 +20,7 @@ window.onscroll = () => {
         myName.style.bottom = '-114px';
     }
     console.log(window.scrollY);
-    if (window.scrollY >= 500 && window.scrollY < 900) {
+    if (window.scrollY >= 200 && window.scrollY < 900) {
         userSection.style.left = '0';
         userSection.style.opacity = '1';
     }else{
