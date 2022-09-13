@@ -120,16 +120,16 @@ let offInput = document.getElementById('offInput');
 // setting 
 settingUserName.textContent = localStorage.getItem('toDoUsername')
 let count1 = 0 ;
-localStorage.setItem("soundOn" , true);
-onInput.checked = true;
-offInput.checked = false;
-onDiv.style.color = 'var(--blur)'
-offDiv.style.color = 'var(--font-color)'
-if(localStorage.getItem('soundOn')){
+if(localStorage.getItem('soundOn') === 'true'){
     onInput.checked = true;
     offInput.checked = false;
     onDiv.style.color = 'var(--blur)'
     offDiv.style.color = 'var(--font-color)'
+}else if(localStorage.getItem('soundOn') === 'false'){
+    onInput.checked = false;
+    offInput.checked = true;
+    onDiv.style.color = 'var(--font-color)'
+    offDiv.style.color = 'var(--blur)'
 }else{
     onInput.checked = true;
     offInput.checked = false;
@@ -238,24 +238,46 @@ addTask.oninput = () =>{
                 addToLocalStorage(tasks);
                 console.log(tasks)
                 
-                // check(tasks)
-                let deleteTask = document.querySelectorAll('.tasks .container .tasksField .taskLi button');
-                deleteTask.forEach(element => {
-                    // delete task 
-                    element.onclick = () =>{
-                        let getNum = element.id.match(/(\d+)/);
-                        document.getElementById(`task${getNum[0]}`).remove();
-                        deleteTaskWith(getNum[0]);
-                        // add tasks to localStorage
-                        addToLocalStorage(tasks); 
-                    }
-                });
             }
         }
     }else{
         addTask.placeholder = 'Write your task here!'
     }
 }
+// check(tasks)
+let deleteTask = document.querySelectorAll('.tasks .container .tasksField .taskLi button');
+deleteTask.forEach(element => {
+    // delete task 
+    element.onclick = () =>{
+        let getNum = element.id.match(/(\d+)/);
+        document.getElementById(`task${getNum[0]}`).remove();
+        deleteTaskWith(getNum[0]);
+        // add tasks to localStorage
+        addToLocalStorage(tasks); 
+    }
+});
+// edit on task
+let editTask = document.querySelectorAll('.tasks .container .taskLi .edit');
+editTask.forEach(element => {
+    // edit task 
+    element.onclick = () =>{
+        let getNum = element.id.match(/(\d+)/);
+        let task = document.getElementById(`taskValue${getNum[0]}`);
+        console.log(tasks)
+        console.log(task)
+        console.log(getNum[0])
+        console.log(typeof getNum[0])
+        let taskWithEdit =  window.prompt('Enter the new value: ' , task.textContent);
+        task.textContent = taskWithEdit ; 
+        tasks.forEach((t) => {
+            if(t.id === +getNum[0]){
+                t.title = task.textContent ;
+            }
+            // add tasks to localStorage
+            addToLocalStorage(tasks); 
+        })
+    }
+});
 deleteAll.onclick = () =>{
     tasksField.innerHTML = '<h1 id="free">You are free now!</h1>'
     tasksField.style.backgroundColor = 'var(--secondBack)'
@@ -271,6 +293,7 @@ function addTasksFrom(params) {
         let taskLi = document.createElement('li');
         taskLi.innerHTML = 
         `
+        <div id="edit${task.id}" class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
         <label class="container2" id="task${task.id}">
         <input id=done${task.id} type="checkbox">
         <span class="taskValue" id="taskValue${task.id}">${task.title}</span> 
@@ -292,7 +315,7 @@ function addTasksFrom(params) {
                 task.status = false ;
             }
             addToLocalStorage(tasks)
-            if(localStorage.getItem('soundOn') === 'true'){
+            if((localStorage.getItem('soundOn') === 'true') || (onDiv.style.color === 'var(--blur)')){
                 if(ch === 0){
                     ch++;
                     if(ch > audioArr.length){

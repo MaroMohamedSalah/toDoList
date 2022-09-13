@@ -201,6 +201,7 @@ ul{
     flex-direction: column;
 }
 .tasks .container .tasksField .taskLi{
+    position: relative;
     margin: 30px;
     font-size: 35px;
     background-color: var(--secondBack);
@@ -244,7 +245,17 @@ ul{
     overflow: auto;
     height: 100%;
 }
-
+.tasks .container .tasksField .taskLi .edit{
+    position: absolute;
+    top: -46px;
+    color: var(--secondBack);
+    right: 52px;
+    cursor: pointer;
+    transition: all 0.75s ease-in-out;
+}
+.tasks .container .tasksField .taskLi .edit:hover{
+    color: var(--secondColor);
+}
 /* custom check box  */
 /* Customize the label (the container) */
 .container2 {
@@ -356,6 +367,10 @@ ul{
         padding: 20px;
         font-size: 14px;
         margin-bottom: 60px;
+    }
+    .tasks .container .taskLi .edit{
+        top: -22px !important;
+        font-size: 17px !important;
     }
 } 
 
