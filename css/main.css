@@ -214,6 +214,31 @@ ul{
     padding: 30px;
     border-radius: 11px;
 }
+.important{
+    border: 2px solid;
+    animation: important 2s forwards ease-in-out infinite;
+}
+.high{
+    position: absolute;
+    top: 8px;
+    font-size: 21px;
+    color: var(--backGround);
+    cursor: pointer;
+    left: 7px;
+    transition: all 0.75s ease-in-out;
+}
+
+@keyframes important {
+    0%{
+        border-color: #ff0066;
+    }
+    50%{
+        border-color: var(--blur);
+    }
+    100%{
+        border-color: #ff0066;
+    }
+}
 .tasks .container .tasksField .taskLi input{
     margin-right: -100px;
 }
@@ -342,7 +367,10 @@ ul{
         width: 129%;
         height: 83px;
         padding: 18px;
-    }   
+    } 
+    .high{
+        font-size: 15px;
+    }  
     .tasks .container .tasksField .taskLi .taskValue{
         overflow: auto;
         font-size: 21px;

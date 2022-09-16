@@ -99,6 +99,7 @@ let addTask = document.getElementById('addTask');
 let addBtn = document.getElementById('addBtn');
 let free = document.getElementById('free');
 let tasksField = document.getElementById('tasksField');
+let important = document.getElementsByClassName('high');
 let deleteAll = document.getElementById('deleteAll');
 let taskValue = document.getElementById('taskValue');
 let delTask = document.getElementById('delTask');
@@ -230,14 +231,15 @@ addTask.oninput = () =>{
                 const task = {
                     id: Date.now(),
                     title: addTask.value,
-                    status: false
+                    status: false,
+                    important : false
                 }
+                console.log(task)
                 tasks.push(task);
                 addTasksFrom(tasks);
                 addTask.value = '';
                 addToLocalStorage(tasks);
                 console.log(tasks)
-                
             }
         }
     }else{
@@ -293,6 +295,7 @@ function addTasksFrom(params) {
         let taskLi = document.createElement('li');
         taskLi.innerHTML = 
         `
+        <div id = "important${task.id}" class='high'><i class="fa-solid fa-star"></i></div>
         <div id="edit${task.id}" class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
         <label class="container2" id="task${task.id}">
         <input id=done${task.id} type="checkbox">
@@ -301,18 +304,26 @@ function addTasksFrom(params) {
         <button id="delTask${task.id}">Delete</button>
         </label>
         `
-        
-        taskLi.className = `taskLi`;
+        if(task.important){
+            taskLi.className = `taskLi important`;
+        }else{
+            taskLi.className = `taskLi`;
+        }
         taskLi.id = `task${task.id}`
         tasksField.appendChild(taskLi);
         if (task.status) {
+            taskLi.className = `taskLi`; // no border
             document.getElementById(`done${task.id}`).checked = true;
         }
         document.getElementById(`done${task.id}`).onclick = () =>{
             if(document.getElementById(`done${task.id}`).checked){
-                task.status = true ;
+                task.status = true ; //done
+                taskLi.className = `taskLi`; // no border
             }else{
                 task.status = false ;
+                if(task.important){
+                    taskLi.className = `taskLi important` ;
+                }
             }
             addToLocalStorage(tasks)
             if((localStorage.getItem('soundOn') === 'true') || (onDiv.style.color === 'var(--blur)')){
@@ -337,6 +348,30 @@ function addTasksFrom(params) {
                 }
             }
         }
+        // add important flag
+        if(task.important === true){
+            console.log('yes')
+            document.getElementById(`important${task.id}`).style.color = 'var(--secondColor)' ;
+
+        }else{
+            document.getElementById(`important${task.id}`).style.color = 'var(--backGround)' ;
+        }
+        let count3 = 0;
+        document.getElementById(`important${task.id}`).onclick = () => {
+            if(count3 === 0){
+                count3++ ;
+                document.getElementById(`important${task.id}`).style.color = 'var(--secondColor)' ;
+                task.important = true ;
+                taskLi.className = `taskLi important`;
+                addToLocalStorage(tasks)
+            }else {
+                count3 = 0 ;
+                document.getElementById(`important${task.id}`).style.color = 'var(--backGround)' ;
+                task.important = false ;
+                taskLi.className = `taskLi`;
+                addToLocalStorage(tasks)
+            }
+        }
     });
     addTask.value = '';
 }
@@ -350,4 +385,13 @@ function deleteTaskWith(taskId) {
     console.log(`taskId : ${taskId}`);
     tasks = tasks.filter((el) => el.id != taskId);
     addToLocalStorage(tasks)
-}  
+} 
+
+
+// function onImportantHandel(){
+//     if(localStorage.getItem('importantStat') === true){
+//         return 'true'
+//     }else{
+//         return 'false'
+//     }
+// }
