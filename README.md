@@ -11,4 +11,4 @@ this project was done in only one week!
 *  UI has been designed and converted to Front-end code by me.
 *  use HTML, CSS, and JS.
 ## Project link
-[Here](https://maromohamedsalah.github.io/toDoList/pages/main.html)
+[Here](https://maromohamedsalah.github.io/toDoList/)
